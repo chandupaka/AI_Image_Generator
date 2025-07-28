@@ -11,6 +11,8 @@ const API_KEY = process.env.API_KEY;
 app.use(cors()); // allow all origins
 app.use(express.json()); // parse JSON requests
 
+app.use(express.static(path.join(__dirname, "public")));
+
 // Route to handle image generation securely
 app.post("/api/generate", async (req, res) => {
   const { prompt, model, size } = req.body;
