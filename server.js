@@ -1,19 +1,19 @@
-// server.js
+require("dotenv").config(); // <--- Load .env first
+
 const express = require("express");
 const cors = require("cors");
 const axios = require("axios");
+const path = require("path");
 
 const app = express();
 const PORT = process.env.PORT || 3000;
-
 const API_KEY = process.env.API_KEY;
 
-app.use(cors()); // allow all origins
-app.use(express.json()); // parse JSON requests
+app.use(cors());
+app.use(express.json());
+app.use(express.static(path.join(__dirname, "public"))); // Serve frontend
 
-app.use(express.static(path.join(__dirname, "public")));
-
-// Route to handle image generation securely
+// Secure backend route
 app.post("/api/generate", async (req, res) => {
   const { prompt, model, size } = req.body;
 
@@ -36,7 +36,7 @@ app.post("/api/generate", async (req, res) => {
       }
     );
 
-    res.json(response.data); // send back base64 JSON to frontend
+    res.json(response.data);
   } catch (error) {
     console.error("Error from Hugging Face API:", error.response?.data || error.message);
     res.status(500).json({ error: "Image generation failed" });
