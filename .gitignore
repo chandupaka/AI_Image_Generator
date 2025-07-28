@@ -1,0 +1,4 @@
+node_modules/
+.env
+public/script.js
+script.js
