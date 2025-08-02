@@ -1,3 +1,5 @@
+const BASE_URL = 'https://ai-image-generator-auth.onrender.com';
+
 const registerForm = document.getElementById('registerForm');
 if (registerForm) {
   registerForm.addEventListener('submit', async (e) => {
@@ -17,7 +19,7 @@ if (registerForm) {
     }
 
     try {
-      const res = await fetch('http://localhost:3001/register', {
+      const res = await fetch(`${BASE_URL}/register`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ fullname, email, password })
@@ -59,7 +61,7 @@ if (loginForm) {
     const password = document.getElementById('password').value;
 
     try {
-      const res = await fetch('http://localhost:3001/login', {
+      const res = await fetch(`${BASE_URL}/login`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, password })
