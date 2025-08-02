@@ -53,6 +53,26 @@ if (registerForm) {
   });
 }
 
+  function openModal(page) {
+    const modal = document.getElementById("modalOverlay");
+    const frame = document.getElementById("modalFrame");
+    frame.src = page;
+    modal.style.display = "block";
+  }
+
+  function closeModal() {
+    document.getElementById("modalOverlay").style.display = "none";
+    document.getElementById("modalFrame").src = "";
+  }
+
+  // Close modal when clicking outside the content
+  window.onclick = function(event) {
+    const modal = document.getElementById("modalOverlay");
+    if (event.target === modal) {
+      closeModal();
+    }
+  };
+
 const loginForm = document.getElementById('loginForm');
 if (loginForm) {
   loginForm.addEventListener('submit', async (e) => {
