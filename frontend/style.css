@@ -41,6 +41,28 @@ body{
     background: linear-gradient(#E9E9FF,#C8C7FF);
 }
 
+.logout-container {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}
+
+.logout-btn {
+  padding: 10px 18px;
+  background-color: #1319b3;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.logout-btn:hover {
+    background-color: #004272;
+}
+
+
 .container {
     width: 900px;
     padding: 32px;

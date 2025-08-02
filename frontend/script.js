@@ -20,6 +20,30 @@ const examplePrompts = [
     "A dramatic stormy sky over a desert landscape"
 ];
 
+
+  function logout() {
+  Swal.fire({
+    title: 'Are you sure?',
+    text: "You will be logged out.",
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonColor: '#e15f56ff',
+    cancelButtonColor: '#aaa',
+    confirmButtonText: 'Yes, Logout',
+    cancelButtonText: 'No'
+  }).then((result) => {
+    if (result.isConfirmed) {
+      // Clear token or session
+      localStorage.removeItem("token");
+
+      // Redirect to login or interface page
+      window.location.href = "/authentication/interface.html";
+    }
+  });
+}
+
+
+
 (() => {
     const savedTheme = localStorage.getItem("theme");
     const systemPrefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
@@ -148,4 +172,6 @@ function downloadImage(index) {
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
+
+    
 }
