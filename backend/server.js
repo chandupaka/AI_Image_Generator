@@ -1,4 +1,4 @@
-require("dotenv").config(); // <--- Load .env first
+require("dotenv").config(); 
 
 const express = require("express");
 const cors = require("cors");
@@ -11,9 +11,8 @@ const API_KEY = process.env.API_KEY;
 
 app.use(cors());
 app.use(express.json());
-app.use(express.static(path.join(__dirname, "public"))); // Serve frontend
+app.use(express.static(path.join(__dirname, "public"))); 
 
-// Secure backend route
 app.post("/api/generate", async (req, res) => {
   const { prompt, model, size } = req.body;
 
