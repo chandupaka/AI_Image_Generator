@@ -95,7 +95,7 @@ if (loginForm) {
           timer: 1500,
           showConfirmButton: false
         }).then(() => {
-          window.top.location.href = '/https://ai-image-generator-brown-nu.vercel.app/';
+          window.top.location.href = 'https://ai-image-generator-brown-nu.vercel.app/';
         });
       } else {
         Swal.fire({
