@@ -65,7 +65,6 @@ if (registerForm) {
     document.getElementById("modalFrame").src = "";
   }
 
-  // Close modal when clicking outside the content
   window.onclick = function(event) {
     const modal = document.getElementById("modalOverlay");
     if (event.target === modal) {
@@ -96,7 +95,7 @@ if (loginForm) {
           timer: 1500,
           showConfirmButton: false
         }).then(() => {
-          window.top.location.href = 'https://ai-image-generator-brown-nu.vercel.app/';
+          window.top.location.href = '/https://ai-image-generator-brown-nu.vercel.app/';
         });
       } else {
         Swal.fire({

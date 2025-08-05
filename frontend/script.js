@@ -33,11 +33,8 @@ const examplePrompts = [
     cancelButtonText: 'No'
   }).then((result) => {
     if (result.isConfirmed) {
-      // Clear token or session
       localStorage.removeItem("token");
-
-      // Redirect to login or interface page
-      window.location.href = "/authentication/interface.html";
+      window.location.href = "../authentication/index.html";
     }
   });
 }
@@ -113,9 +110,6 @@ const generateImages = async (selectModel, imageCount, aspectRatio, promptText) 
   await Promise.allSettled(imagePromises);
 };
 
-
-
-
  const createImageCards = (selectModel, imageCount, aspectRatio, promptText) => {
     gridGallery.innerHTML = "";
     for (let i = 0; i < imageCount; i++) {
@@ -168,7 +162,7 @@ function downloadImage(index) {
 
     const link = document.createElement("a");
     link.href = imageSrc;
-    link.download = `generated_image_${index + 1}.png`; // you can customize the file name
+    link.download = `generated_image_${index + 1}.png`; 
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);

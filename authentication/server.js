@@ -15,15 +15,11 @@ app.use(cors());
 app.use(express.json());
 
 app.use(express.json());
-app.use(express.static(__dirname)); // Serve all static files from the current directory
-
-// Serve interface.html at root "/"
+app.use(express.static(__dirname)); 
 app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "interface.html"));
 });
 
-
-// MongoDB Connection
 mongoose.connect(MONGO_URL, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
@@ -31,7 +27,6 @@ mongoose.connect(MONGO_URL, {
 .then(() => console.log("✅ Connected to MongoDB"))
 .catch((err) => console.error("❌ MongoDB error:", err));
 
-// User Schema and Model
 const userSchema = new mongoose.Schema({
   fullname: String,
   email: { type: String, unique: true },
@@ -39,7 +34,6 @@ const userSchema = new mongoose.Schema({
 });
 const User = mongoose.model("User", userSchema);
 
-// Register Route
 app.post("/register", async (req, res) => {
   const { fullname, email, password } = req.body;
   try {
@@ -55,7 +49,6 @@ app.post("/register", async (req, res) => {
   }
 });
 
-// Login Route
 app.post("/login", async (req, res) => {
   const { email, password } = req.body;
   try {
@@ -71,7 +64,6 @@ app.post("/login", async (req, res) => {
   }
 });
 
-// Start Server
 app.listen(PORT, () => {
   console.log(`🚀 Server running at http://localhost:${PORT}`);
 });
