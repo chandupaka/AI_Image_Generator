@@ -34,7 +34,7 @@ const examplePrompts = [
   }).then((result) => {
     if (result.isConfirmed) {
       localStorage.removeItem("token");
-      window.location.href = "../authentication/index.html";
+      window.location.href = "https://ai-image-generator-xt1u.vercel.app/";
     }
   });
 }
