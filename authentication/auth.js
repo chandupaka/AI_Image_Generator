@@ -78,7 +78,14 @@ if (loginForm) {
     e.preventDefault();
     const email = document.getElementById('email').value;
     const password = document.getElementById('password').value;
-
+    Swal.fire({
+      title: 'Please wait...',
+      text: 'We are verifying your details',
+      allowOutsideClick: false,
+      didOpen: () => {
+        Swal.showLoading(); // spinner animation
+      }
+    });
     try {
       const res = await fetch(`${BASE_URL}/login`, {
         method: 'POST',
@@ -97,6 +104,7 @@ if (loginForm) {
         }).then(() => {
           window.top.location.href = 'https://ai-image-generator-brown-nu.vercel.app/';
         });
+        
       } else {
         Swal.fire({
           icon: 'error',
